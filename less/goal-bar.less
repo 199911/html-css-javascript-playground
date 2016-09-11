@@ -18,50 +18,37 @@
 // default css for desktop
 .playground-goal-bar {
   display: block;
-  padding: 6px 0;
-  text-align: center;
+  background-color: @mail-color;
   font-family: @san-serif-font;
   font-weight: @normal;
   font-size: 17px;
-  background-color: @mail-color;
-  color: #ffffff;
   text-decoration: none;
+  text-align: center;
+  color: #ffffff;
   p {
-    width: 83%;
-    display: inline-block;
-    padding-left: 20px;
-    line-height: 28px;
     vertical-align: middle;
+    width: 85%;
     margin: 0;
-    @media (max-width: 430px) {
-      width: 81%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    @media (min-width: 992px) {
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
+    display: inline-block;
   }
   .icon_icon-arrow {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: 10px;
     vertical-align: middle;
-    @media (max-width: 430px) {
-      margin-right: 0;
+    width: 10%;
+    font-size: 20px;
+    @media (min-width: 992px) {
+      font-size: 16px;
     }
+    font-weight: bold;
   }
   &:hover, &:focus {
     text-decoration: none;
     color: #ffffff;
     background-color: @mail-color-lighter;
-  }
-  // visible xs and sm
-  // @media (max-width: @screen-sm-max) { ... }
-  @media (max-width: 991px) {
-    padding: 20px 0;
-    width: 100%;
-    margin-top: 40px;
-    z-index: 9;
-    position: absolute;
-    text-align: left;
-    .icon_icon-arrow {
-      font-size: 20px;
-    }
   }
 }
