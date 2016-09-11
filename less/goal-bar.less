@@ -1,0 +1,67 @@
+// variables
+@san-serif-font: Roboto, "Helvetica Neue", "Helvetica", Arial, "San-serif";
+@normal: 400;
+@mail-color: #2DB73B;
+@mail-color-lighter: lighten(@mail-color, 10%);
+
+#playground-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+}
+
+// default css for desktop
+.playground-goal-bar {
+  display: block;
+  padding: 6px 0;
+  text-align: center;
+  font-family: @san-serif-font;
+  font-weight: @normal;
+  font-size: 17px;
+  background-color: @mail-color;
+  color: #ffffff;
+  text-decoration: none;
+  p {
+    width: 83%;
+    display: inline-block;
+    padding-left: 20px;
+    line-height: 28px;
+    vertical-align: middle;
+    margin: 0;
+    @media (max-width: 430px) {
+      width: 81%;
+    }
+  }
+  .icon_icon-arrow {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    vertical-align: middle;
+    @media (max-width: 430px) {
+      margin-right: 0;
+    }
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: @mail-color-lighter;
+  }
+  // visible xs and sm
+  // @media (max-width: @screen-sm-max) { ... }
+  @media (max-width: 991px) {
+    padding: 20px 0;
+    width: 100%;
+    margin-top: 40px;
+    z-index: 9;
+    position: absolute;
+    text-align: left;
+    .icon_icon-arrow {
+      font-size: 20px;
+    }
+  }
+}
