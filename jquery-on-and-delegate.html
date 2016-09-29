@@ -18,11 +18,14 @@
   </style>
   <body>
 
-    <div class="container" style="position: relative; margin-top: 100px;">
+    <div class="container" style="margin: 100px auto;">
 
       <h1 class="h1">
         Use $().click();
       </h1>
+      <ul>
+        <li>Does not work well with frontend rendering</li>
+      </ul>
       <pre>
 $('.click-row .clickable-div').click(function(){
   alert('click event detected!');
@@ -41,6 +44,11 @@ $('.click-row .clickable-div').click(function(){
       <h1 class="h1">
         Use $().delegate();
       </h1>
+      <ul>
+        <li>Backbone.View uses this to bind the event handler (Seems we do not use this function)</li>
+        <li>Will be deprecated in jQuery 3.x (We are using 1.12)</li>
+        <li>Seems cannot solve nested dynamic rendering</li>
+      </ul>
       <pre>
 $('.delegate-row').delegate('.clickable-div', 'click', function(){
   alert('click event detected!');
@@ -59,6 +67,11 @@ $('.delegate-row').delegate('.clickable-div', 'click', function(){
       <h1 class="h1">
         Use $().on();
       </h1>
+      <ul>
+        <li>Replacement of $().delegate()</li>
+        <li>We are using this in lots of place</li>
+        <li>Seems cannot solve nested dynamic rendering</li>
+      </ul>
       <pre>
 $('.on-row').on('click', '.clickable-div', function(){
   alert('click event detected!');
