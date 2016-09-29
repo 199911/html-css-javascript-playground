@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lifehack component playground</title>
+
+    <!-- Lifehack Bootstrap -->
+    <link href="https://cdn-4.lifehack.org/wp-content/themes/lifehack-theme/css/default.css" rel="stylesheet">
+
+  </head>
+  <style media="screen">
+    .container > * {
+      margin-top: 20px;
+    };
+  </style>
+  <body>
+
+    <div class="container" style="position: relative; margin-top: 100px;">
+
+      <h1 class="h1">
+        Use $().click();
+      </h1>
+      <pre>
+$('.click-row .clickable-div').click(function(){
+  alert('click event detected!');
+});</pre>
+      <div class="click-row row" style="position: relative; top: 20px;">
+        <a class="btn btn-default btn-block">
+          Add a new clickable div!
+        </a>
+        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
+          The first clickable div
+        </div>
+      </div>
+
+      <hr style="margin: 100px 0;">
+
+      <h1 class="h1">
+        Use $().delegate();
+      </h1>
+      <pre>
+$('.delegate-row').delegate('.clickable-div', 'click', function(){
+  alert('click event detected!');
+});</pre>
+      <div class="delegate-row row" style="position: relative; top: 20px;">
+        <a class="btn btn-default btn-block">
+          Add a new clickable div!
+        </a>
+        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
+          The first clickable div
+        </div>
+      </div>
+
+      <hr style="margin: 100px 0;">
+
+      <h1 class="h1">
+        Use $().on();
+      </h1>
+      <pre>
+$('.on-row').on('click', '.clickable-div', function(){
+  alert('click event detected!');
+});</pre>
+      <div class="on-row row" style="position: relative; top: 20px;">
+        <a class="btn btn-default btn-block">
+          Add a new clickable div!
+        </a>
+        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
+          The first clickable div
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    $('.click-row .clickable-div').click(function(){
+      alert('click event detected!');
+    });
+    $('.delegate-row').delegate('.clickable-div', 'click', function(){
+      alert('click event detected!');
+    });
+    $('.on-row').on('click', '.clickable-div', function(){
+      alert('click event detected!');
+    });
+    $('a.btn.btn-default').click(function(){
+      $(this).after('<div class="clickable-div col-xs-4" style="height: 100px; background:skyblue; border: blue;">Another clickable div</div>');
+    })
+    </script>
+
+  </body>
+</html>
