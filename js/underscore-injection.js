@@ -5,7 +5,8 @@ var data = {
   "urlWithAllChar": "underscore-template-injection.html#" + ascii,
   "encodedUrlWithAllChar": encodeURI("underscore-template-injection.html#" + ascii),
   "asciiWithInjection": ascii + "<script>console.log('Another injection in asciiWithInjection');</script>",
-  "injectionData": '{"html":"<pre> `hi` "hi" \'hi\' </div> </pre>"}'
+  "injectionData": '{"html":"<pre> `hi` "hi" \'hi\' </div> </pre>"}',
+  "injectToUnderscoreTemplate": 'string %><%= <p>hi</p> %>'
 };
 var tmplStr = {
   pEsc: "<p><%- text %></p>",
@@ -21,7 +22,8 @@ var tmplStr = {
   dataEsc: "<p data-str='<%- asciiWithInjection %>'>",
   dataNoEsc: "<p data-str='<%= asciiWithInjection %>'>",
   injection1: "<p data-str='<%= injectionData %>'>",
-  injection2: "<p data-str='<%- injectionData %>'>"
+  injection2: "<p data-str='<%- injectionData %>'>",
+  injection3: "<p data-str='<%- injectToUnderscoreTemplate %>'>"
 };
 var tmpl = {};
 _.each(tmplStr, function(str, key){ tmpl[key] = _.template(str);});
