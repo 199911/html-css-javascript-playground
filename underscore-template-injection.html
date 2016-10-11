@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lifehack component playground</title>
+
+    <!-- Lifehack Bootstrap -->
+    <link href="https://cdn-4.lifehack.org/wp-content/themes/lifehack-theme/css/default.css" rel="stylesheet">
+    <style media="screen">
+      div[data-tmpl*=Esc]:before {
+        content: "Using <%- %>";
+        font-size: 1.5em;
+        display: block;
+      }
+      div[data-tmpl*='NoEsc']:before {
+        content: "Using <%= %>";
+      }
+    </style>
+  </head>
+  <body>
+
+    <main class="container">
+      <h1>Underscore template injection</h1>
+      <h2>Text Content</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="pEsc">
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="pNoEsc">
+        </div>
+      </div>
+      <h2>Text Content with html (Injection)</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlEsc">
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlNoEsc">
+        </div>
+      </div>
+      <h2>Hyperlink with all ASCII characters</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="aEsc">
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="aNoEsc">
+        </div>
+      </div>
+      <h2>Hyperlink with all ASCII characters encoded by encodeURI()</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="aEncodedEsc">
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="aEncodedNoEsc">
+        </div>
+      </div>
+      <h3>Using <% %></h3>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="aPrint">
+          Using <% print(encodedUrl( url ))%>
+          <br>
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="aPrintNoEncode">
+          Using <% print( url )%>
+          <br>
+        </div>
+      </div>
+      <h2>Data attribute</h2>
+      <div class="row">
+        <div class="col-xs-12 col-md-6" data-tmpl="dataEsc">
+        </div>
+        <div class="col-xs-12 col-md-6" data-tmpl="dataNoEsc">
+        </div>
+      </div>
+      <h1>Summary</h1>
+      <ul>
+        <li>Always use <%- %></li>
+        <li>Url encode is not to prevent injection, it is used to encoding non-ASCII character.</li>
+        <li>Most browser do url encode automatically, but we better encode it to prevent any edge case cause problems.</li>
+        <li>Ref: <a href="http://stackoverflow.com/questions/9086296/why-url-encode-or-which-characters-to-encode">Why url encode, or which characters to encode</a></li>
+      </ul>
+      <hr>
+      <h1>Injection Playground</h1>
+      <div data-tmpl="injection1">
+      </div>
+      <div data-tmpl="injection2">
+      </div>
+    </main>
+    <script src="/lifehack-component-playground/js/underscore-1.7.0.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="/lifehack-component-playground/js/underscore-injection.js" charset="utf-8"></script>
+  </body>
+</html>
