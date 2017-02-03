@@ -6,3 +6,4 @@ and idea on HTML, CSS and Javascript.
 - [jQuery.on() vs jQuery.delegate()](jquery-on-and-delegate.html)
 - [Underscore Template Injection](underscore-template-injection.html)
 - [Specificity War Temporary Fix](specificity-war-temp-fix.html)
+- [Z-index Specificity](z-index-specificity.html)

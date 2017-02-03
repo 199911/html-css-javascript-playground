@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Z-index Specificity</title>
+
+    <!-- Lifehack Bootstrap -->
+    <style media="screen">
+        section {
+            margin-bottom: 400px;
+        }
+        .popup-container {
+            position: relative;
+            text-align: center;
+            height: 400px;
+            width: 400px;
+        }
+        .popup-A {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(0, 50%, 50%);
+            height: 200px;
+            width: 200px;
+            color: white;
+            z-index: 10;
+        }
+        .popup-B {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(120, 50%, 50%);
+            color: white;
+            height: 200px;
+            width: 200px;
+            z-index: 20;
+        }
+        .popup-C {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(240, 50%, 50%);
+            height: 200px;
+            width: 200px;
+            color: white;
+            z-index: 9999;
+        }
+    </style>
+  </head>
+  <body>
+
+    <main class="container">
+        <section>
+            <h1>The element will higher z-index will be shown first</h1>
+            <div class="popup-container">
+                <div class="popup-B" style="top: 50px; left: 100px;">
+                    Z-index = 20
+                </div>
+                <div class="popup-A">
+                    Z-index = 10
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>But sometimes do not works</h1>
+            <p>PS: blue div have 9999 z-index and it is children of red div</p>
+            <div class="popup-container">
+                <div class="popup-B" style="top: 50px; left: 100px;">
+                    Z-index = 20
+                </div>
+                <div class="popup-A">
+                    Z-index = 10
+                    <div class="popup-C" style="top: 100px; left: 50px;">
+                        Z-index = 9999
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>Because z-index specificity is not compare as a value, but an array of value</h1>
+            <p>The parent's z-index have higher specificity</p>
+            <p>No matter how large the z-index of children are, it cannot override parent's z-index</p>
+            <p>We can solve this by refactor the dom structure</p>
+            <p>PS: All divs are siblings</p>
+            <div class="popup-container">
+                <div class="popup-B" style="top: 50px; left: 100px;">
+                    Z-index = 20
+                </div>
+                <div class="popup-A">
+                    Z-index = 10
+                </div>
+                <div class="popup-C" style="top: 100px; left: 50px;">
+                    Z-index = 9999
+                </div>
+            </div>
+        </section>
+    </main>
+  </body>
+</html>
