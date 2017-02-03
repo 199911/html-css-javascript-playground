@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Specificity War Temporary Fix</title>
+
+    <!-- Lifehack Bootstrap -->
+    <style media="screen">
+        section {
+            margin-bottom: 400px;
+        }
+        #legacyComponent {
+            margin: 20px;
+            border: 5px solid red;
+        }
+        #legacyComponent p {
+            font-size: 40px;
+        }
+        .newComponent {
+            margin: 20px;
+            border: 2px solid green;
+        }
+        .newComponent .newComponent-content {
+            font-size: 20px;
+        }
+        #legacyComponent .newLegacyComponent {
+            margin: 20px;
+            border: 2px solid green;
+        }
+        #legacyComponent .newLegacyComponent .newLegacyComponent-content {
+            font-size: 20px;
+        }
+        div[id="tempFixedMyComponent"] {
+            margin: 20px;
+            border: 5px solid red;
+        }
+        div[id="tempFixedMyComponent"] p {
+            font-size: 40px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <main class="container">
+        <section>
+            <h1>This is a legacy component, which use id in CSS selector</h1>
+            <div id="legacyComponent">
+                <p>
+                    It is my own div!
+                </p>
+            </div>
+        </section>
+        <section>
+            <h1>This is new component</h1>
+            <h2>It following a good practise, using class instead of id for CSS selector</h2>
+            <div class="newComponent">
+                <p class="newComponent-content">
+                    Extra component implemented by others
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h1>When we need to put the new component inside the legacy component...</h1>
+            <h2>The old component override the new component's style, as id have a much higher specificity</h2>
+            <div id="legacyComponent">
+                <p>
+                    It is my own div!
+                </p>
+                <div class="newComponent">
+                    <p class="newComponent-content">
+                        Extra component implemented by others
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>One way to fix it is to add the id to the component</h1>
+            <h2>But the new component become legacy too! As it also use id in CSS selector!</h2>
+            <div id="legacyComponent">
+                <p>
+                    It is my own div!
+                </p>
+                <div class="newLegacyComponent">
+                    <p class="newLegacyComponent-content">
+                        Extra component implemented by others
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>A better way to fix is refactor the old component</h1>
+            <h2>Using the attribute selector <code>div[id="legacy-component"]</code> to replace id selector <code>#legacy-component</code></h2>
+            <p>Attribute selector can be overrided by class selector</p>
+            <p>We can keep the id in HTML, so the javascript function hooked by id can keep functioning</p>
+            <div id="tempFixedMyComponent">
+                <p>
+                    It is my own div!
+                </p>
+                <div class="newComponent">
+                    <p class="newComponent-content">
+                        Extra component implemented by others
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+  </body>
+</html>
