@@ -1,0 +1,19 @@
+body {
+  background-color: hsl(218, 20%, 90%);
+}
+header {
+  margin: 15vh 3vw 5vh 3vw;
+  border-radius: 5px;
+  padding: 2vh 2vw;
+  background: hsl(218, 80%, 60%);
+  color: white;
+}
+main {
+  background: white;
+  margin: 10vh 3vw;
+  border-radius: 5px;
+  padding: 2vh 2vw;
+}
+section + section {
+  margin-top: 200px;
+}
