@@ -11,78 +11,103 @@
     <link rel="stylesheet" href="./css/master.css">
   </head>
   <style media="screen">
-    .container > * {
-      margin-top: 20px;
-    };
+    ul, pre {
+      display: inline-block;
+      vertical-align: top;
+    }
+    ul {
+      margin-right: 5%;
+    }
+    .card {
+      display: inline-block;
+      margin: 5px;
+      min-width: 80px;
+      width: 25%;
+      height: 100px;
+      background: hsl(240, 50%, 80%);
+      padding: 10px;
+    }
   </style>
   <body>
 
+    <header>
+      <h1>jQuery.on() vs jQuery.delegate()</h1>
+    </header>
+
     <main>
-
-      <h1 class="h1">
-        Use $().click();
-      </h1>
-      <ul>
-        <li>Does not work well with frontend rendering</li>
-      </ul>
-      <pre>
-$('.click-row .clickable-div').click(function(){
-  alert('click event detected!');
-});</pre>
-      <div class="click-row row" style="position: relative; top: 20px;">
-        <a class="btn btn-default btn-block">
-          Add a new clickable div!
-        </a>
-        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
-          The first clickable div
+      <section>
+        <h1>
+          Use $().click();
+        </h1>
+        <ul>
+          <li>Does not work well with frontend rendering</li>
+        </ul>
+        <pre>
+  $('.js-clickable-div')
+  .click(function(){
+    alert('click event detected!');
+  });
+        </pre>
+        <div>
+          <button>
+            Add a new clickable div!
+          </button>
+          <br>
+          <div class="js-clickable-div card">
+            The first clickable div
+          </div>
         </div>
-      </div>
+      </section>
 
-      <hr style="margin: 100px 0;">
-
-      <h1 class="h1">
-        Use $().delegate();
-      </h1>
-      <ul>
-        <li>Backbone.View uses this to bind the event handler (Seems we do not use this function)</li>
-        <li>Will be deprecated in jQuery 3.x (We are using 1.12)</li>
-        <li>Seems cannot solve nested dynamic rendering</li>
-      </ul>
-      <pre>
-$('.delegate-row').delegate('.clickable-div', 'click', function(){
-  alert('click event detected!');
-});</pre>
-      <div class="delegate-row row" style="position: relative; top: 20px;">
-        <a class="btn btn-default btn-block">
-          Add a new clickable div!
-        </a>
-        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
-          The first clickable div
+      <section>
+        <h1 class="h1">
+          Use $().delegate();
+        </h1>
+        <ul>
+          <li>Backbone.View uses this to bind the event handler (Seems we do not use this function)</li>
+          <li>Will be deprecated in jQuery 3.x (We are using 1.12)</li>
+          <li>Seems cannot solve nested dynamic rendering</li>
+        </ul>
+        <pre>
+  $('.delegate-row')
+  .delegate('.js-clickable-div', 'click', function(){
+    alert('click event detected!');
+  });</pre>
+        <div class="delegate-row row">
+          <button>
+            Add a new clickable div!
+          </button>
+          <br>
+          <div class="js-clickable-div card">
+            The first clickable div
+          </div>
         </div>
-      </div>
+      </section>
 
-      <hr style="margin: 100px 0;">
-
-      <h1 class="h1">
-        Use $().on();
-      </h1>
-      <ul>
-        <li>Replacement of $().delegate()</li>
-        <li>We are using this in lots of place</li>
-        <li>Seems cannot solve nested dynamic rendering</li>
-      </ul>
-      <pre>
-$('.on-row').on('click', '.clickable-div', function(){
-  alert('click event detected!');
-});</pre>
-      <div class="on-row row" style="position: relative; top: 20px;">
-        <a class="btn btn-default btn-block">
-          Add a new clickable div!
-        </a>
-        <div class="clickable-div col-xs-4" style="height: 100px; background:skyblue">
-          The first clickable div
+      <section>
+        <h1 class="h1">
+          Use $().on();
+        </h1>
+        <ul>
+          <li>Replacement of $().delegate()</li>
+          <li>We are using this in lots of place</li>
+          <li>Seems cannot solve nested dynamic rendering</li>
+        </ul>
+        <pre>
+  $('.on-row')
+  .on('click', '.js-clickable-div', function(){
+    alert('click event detected!');
+  });</pre>
+        <div class="on-row row">
+          <button>
+            Add a new clickable div!
+          </button>
+          <br>
+          <div class="js-clickable-div card">
+            The first clickable div
+          </div>
         </div>
-      </div>
+      </section>
 
     </main>
 
@@ -90,17 +115,17 @@ $('.on-row').on('click', '.clickable-div', function(){
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
-    $('.click-row .clickable-div').click(function(){
+    $('.js-clickable-div').click(function(){
       alert('click event detected!');
     });
-    $('.delegate-row').delegate('.clickable-div', 'click', function(){
+    $('.delegate-row').delegate('.js-clickable-div', 'click', function(){
       alert('click event detected!');
     });
-    $('.on-row').on('click', '.clickable-div', function(){
+    $('.on-row').on('click', '.js-clickable-div', function(){
       alert('click event detected!');
     });
-    $('a.btn.btn-default').click(function(){
-      $(this).after('<div class="clickable-div col-xs-4" style="height: 100px; background:skyblue; border: blue;">Another clickable div</div>');
+    $('button').click(function(){
+      $(this).next().after('<div class="js-clickable-div card">Another clickable div</div>');
     })
     </script>
 
