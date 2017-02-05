@@ -22,69 +22,93 @@
   </head>
   <body>
 
+  </section>
+    <header>
+      <h1>Underscore Template Injection</h1>
+    </header>
     <main>
-      <h1>Underscore template injection</h1>
-      <h2>Text Content</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="pEsc">
+      <section>
+        <h1>Underscore template injection</h1>
+
+        <h2>Text Content</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="pEsc">
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="pNoEsc">
+          </div>
         </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="pNoEsc">
+      </section>
+
+
+      <section>
+        <h2>Text Content with html (Injection)</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlEsc">
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlNoEsc">
+          </div>
         </div>
-      </div>
-      <h2>Text Content with html (Injection)</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlEsc">
+      </section>
+
+
+      <section>
+        <h2>Hyperlink with all ASCII characters</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="aEsc">
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="aNoEsc">
+          </div>
         </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="pWithHtmlNoEsc">
+      </section>
+
+      <section>
+        <h2>Hyperlink with all ASCII characters encoded by encodeURI()</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="aEncodedEsc">
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="aEncodedNoEsc">
+          </div>
         </div>
-      </div>
-      <h2>Hyperlink with all ASCII characters</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="aEsc">
+        <h3>Using <% %></h3>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="aPrint">
+            Using <% print(encodedUrl( url ))%>
+            <br>
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="aPrintNoEncode">
+            Using <% print( url )%>
+            <br>
+          </div>
         </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="aNoEsc">
+      </section>
+
+      <section>
+        <h2>Data attribute</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-6" data-tmpl="dataEsc">
+          </div>
+          <div class="col-xs-12 col-md-6" data-tmpl="dataNoEsc">
+          </div>
         </div>
-      </div>
-      <h2>Hyperlink with all ASCII characters encoded by encodeURI()</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="aEncodedEsc">
+      </section>
+
+      <section>
+        <h1>Summary</h1>
+        <ul>
+          <li>Always use <%- %></li>
+          <li>Url encode is not to prevent injection, it is used to encoding non-ASCII character.</li>
+          <li>Most browser do url encode automatically, but we better encode it to prevent any edge case cause problems.</li>
+          <li>Ref: <a href="http://stackoverflow.com/questions/9086296/why-url-encode-or-which-characters-to-encode">Why url encode, or which characters to encode</a></li>
+        </ul>
+        <h1>Injection Playground</h1>
+        <div data-tmpl="injection1">
         </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="aEncodedNoEsc">
+        <div data-tmpl="injection2">
         </div>
-      </div>
-      <h3>Using <% %></h3>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="aPrint">
-          Using <% print(encodedUrl( url ))%>
-          <br>
+        <div data-tmpl="injection3">
         </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="aPrintNoEncode">
-          Using <% print( url )%>
-          <br>
-        </div>
-      </div>
-      <h2>Data attribute</h2>
-      <div class="row">
-        <div class="col-xs-12 col-md-6" data-tmpl="dataEsc">
-        </div>
-        <div class="col-xs-12 col-md-6" data-tmpl="dataNoEsc">
-        </div>
-      </div>
-      <h1>Summary</h1>
-      <ul>
-        <li>Always use <%- %></li>
-        <li>Url encode is not to prevent injection, it is used to encoding non-ASCII character.</li>
-        <li>Most browser do url encode automatically, but we better encode it to prevent any edge case cause problems.</li>
-        <li>Ref: <a href="http://stackoverflow.com/questions/9086296/why-url-encode-or-which-characters-to-encode">Why url encode, or which characters to encode</a></li>
-      </ul>
-      <hr>
-      <h1>Injection Playground</h1>
-      <div data-tmpl="injection1">
-      </div>
-      <div data-tmpl="injection2">
-      </div>
-      <div data-tmpl="injection3">
-      </div>
+      </section>
+
     </main>
     <script src="js/underscore-1.7.0.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
