@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Responsive Placeholder</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./css/master.css">
+    <style media="screen">
+        .container {
+            display: inline-block;
+            text-align: center;
+            background-color: hsl(0, 75%, 75%);
+            height: 600px;
+            /*
+              To fix the interesting behaviour on vertial-algin: baseline on
+              empty inline block element and contented inline block element
+            */
+            vertical-align: top;
+        }
+        .container-full {
+          width: 100%;
+        }
+        .container-large {
+          width: 49%;
+        }
+        .container-medium {
+          width: 29%;
+        }
+        .container-small {
+          width: 19%;
+        }
+        .item {
+          background-color: hsl(60, 50%, 50%);
+        }
+        .fixed-size-item {
+          width: 360px;
+          height: 180px;
+        }
+        @media (min-width: 801px ){
+          .fixed-size-item {
+            width: 720px;
+            height: 360px;
+          }
+        }
+        @media (min-width: 1201px ){
+          .fixed-size-item {
+            width: 1080px;
+            height: 540px;
+          }
+        }
+        .responsive-item-2-1 {
+          padding-top: 50%;
+        }
+        .responsive-item-4-3 {
+          padding-top: calc(100% / 4 * 3);
+        }
+        .responsive-item-16-9 {
+          padding-top: calc(100% / 16 * 9);
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Responsive Placeholder</h1>
+    </header>
+    <main>
+        <section>
+            <h1>"Responsive" placeholder with media query</h1>
+            <pre>
+.fixed-size-item {
+  width: 360px;
+  height: 180px;
+}
+@media (min-width: 801px ){
+  .fixed-size-item {
+    width: 720px;
+    height: 360px;
+  }
+}
+@media (min-width: 1201px ){
+  .fixed-size-item {
+    width: 1080px;
+    height: 540px;
+  }
+}
+            </pre>
+            <div class="container container-full">
+                <div class="item fixed-size-item">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h1>Responsive placeholder with padding top</h1>
+            <pre>
+.responsive-item {
+  padding-top: 50%;
+}
+            </pre>
+            <div class="container container-large">
+                <div class="item responsive-item-2-1">
+                </div>
+            </div>
+            <div class="container container-medium">
+                <div class="item responsive-item-2-1">
+                </div>
+            </div>
+            <div class="container container-small">
+                <div class="item responsive-item-2-1">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h1>Responsive placeholder in 4:3</h1>
+            <pre>
+.responsive-item-4-3 {
+  padding-top: calc(100% / 4 * 3);
+}
+            </pre>
+            <div class="container container-large">
+                <div class="item responsive-item-4-3">
+                </div>
+            </div>
+            <div class="container container-medium">
+                <div class="item responsive-item-4-3">
+                </div>
+            </div>
+            <div class="container container-small">
+                <div class="item responsive-item-4-3">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h1>Responsive placeholder in 16:9</h1>
+            <pre>
+.responsive-item-16-9 {
+  padding-top: calc(100% / 16 * 9);
+}
+            </pre>
+            <div class="container container-large">
+                <div class="item responsive-item-16-9">
+                </div>
+            </div>
+            <div class="container container-medium">
+                <div class="item responsive-item-16-9">
+                </div>
+            </div>
+            <div class="container container-small">
+                <div class="item responsive-item-16-9">
+                </div>
+            </div>
+        </section>
+        <section>
+          <h1>Cons of this tricks...</h1>
+          <div class="container container-medium">
+              <div class="item responsive-item-16-9">
+              </div>
+          </div>
+          <div class="container container-medium">
+              <div class="item responsive-item-16-9">
+                I am container inside item
+              </div>
+          </div>
+          <h1>TBC...</h1>
+        </section>
+    </main>
+  </body>
+</html>

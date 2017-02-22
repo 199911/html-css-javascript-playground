@@ -8,3 +8,4 @@ and idea on HTML, CSS and Javascript.
 - [Specificity War Temporary Fix](specificity-war-temp-fix.html)
 - [Z-index Specificity](z-index-specificity.html)
 - [Universal Selector and CSS Inheritance](universal-selector-and-css-inheritance.html)
+- [Responsive Placeholder](responsive-placeholder.html)
