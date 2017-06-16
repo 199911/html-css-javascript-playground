@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Javascript error in inline script</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./css/master.css">
+    <style media="screen">
+        .popup-container {
+            position: relative;
+            text-align: center;
+            height: 400px;
+            width: 400px;
+        }
+        .popup-A {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(0, 50%, 50%);
+            height: 200px;
+            width: 200px;
+            color: white;
+            z-index: 10;
+        }
+        .popup-B {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(120, 50%, 50%);
+            color: white;
+            height: 200px;
+            width: 200px;
+            z-index: 20;
+        }
+        .popup-C {
+            position: absolute;
+            padding-top: 20px;
+            background: hsl(240, 50%, 50%);
+            height: 200px;
+            width: 200px;
+            color: white;
+            z-index: 9999;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Javascript error in inline script</h1>
+    </header>
+    <main>
+    </main>
+  </body>
+  <script type="text/javascript">
+      var main = document.querySelector('main');
+      main.innerHTML += '<p>Before uncaught expection</p>';
+      // No method bar of undefined
+      foo.bar();
+      main.innerHTML += '<p>After uncaught expection</p>';
+  </script>
+  <script type="text/javascript">
+      var main = document.querySelector('main');
+      main.innerHTML += '<p>Next script tag after uncaught expection</p>';
+  </script>
+  <script type="text/javascript"></script>
+</html>
